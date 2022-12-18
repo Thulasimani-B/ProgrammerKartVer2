@@ -14,7 +14,7 @@
             <form action="" method="post" novalidate class="shadow p-5">
                 {% csrf_token %}
                 {% for fm in form %}
-                    {{fmlabel_Tag}}{{fm}} <small class="text-danger">{{fm.erros|striptags}}</small>
+                    {{fm.label_tag}}{{fm}} <small class="text-danger">{{fm.erros|striptags}}</small>
                     <br>
                 {% endfor %}
 

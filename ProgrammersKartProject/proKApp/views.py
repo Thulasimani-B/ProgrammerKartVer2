@@ -19,7 +19,7 @@ from django.views import View
 from . models import Product
 
 # registration
-from . forms import CustomerResigtrationForm
+from . forms import CustomerResigtrationForm, CustomerProfileForm
 from django.contrib import messages
 
 def home(request):
@@ -89,6 +89,7 @@ class CustomerRegistrationView(View):
 
 class ProfileView(View):
     def get(self,request):
+        form = CustomerProfileForm()
         return render(request,'apps/profile.html',locals())
     def post(self,request):
         return render(request,'apps/profile.html',locals())
