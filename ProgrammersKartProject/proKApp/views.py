@@ -9,17 +9,18 @@ from django.db.models import Count
 
 # signUp
 from django.contrib.auth.forms import UserCreationForm
-from proKApp.templates.apps.forms import CreateUserForm
 
 #signin
 from django.contrib.auth import authenticate, login, logout
 
 #importing view
 from django.views import View
-# MESSAGES
-from django.contrib import messages
 
 from . models import Product
+
+# registration
+from . forms import CustomerResigtrationForm
+from django.contrib import messages
 
 def home(request):
     return render(request,'apps/home.html')
@@ -30,39 +31,37 @@ def about(request):
 def contactUs(request):
     return render(request,'apps/contactUs.html')
 
-def signUp(request):
-    form = CreateUserForm()
+# def signUp(request):
+#     form = CreateUserForm()
 
-    if request.method=='POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user=form.cleaned_data.get('username')
-            messages.success(request, 'Account was created for ' + user)   
-            return redirect('signIn')   
+#     if request.method=='POST':
+#         form = CreateUserForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             user=form.cleaned_data.get('username')
+#             messages.success(request, 'Account was created for ' + user)   
+#             return redirect('signIn')   
 
-    context = {'form':form}
-    return render(request,'apps/signUp.html',context)
+#     context = {'form':form}
+#     return render(request,'apps/signUp.html',context)
 
+# def signIn(request):
 
-def signIn(request):
+#     if request.method == 'POST':
+#         username=request.POST.get('uname')
+#         password=request.POST.get('pword')
 
-    if request.method == 'POST':
-        username=request.POST.get('uname')
-        password=request.POST.get('pword')
+#         user=authenticate(request, username=username, password=password)
 
-        user=authenticate(request, username=username, password=password)
+#         if user is not None:
+#             login(request, user)
+#             return render(request,'apps/home.html')
+#         else:
+#             messages.error(request, 'Invalid Username and Password')
+#             return render(request,'apps/signIn.html')
 
-        if user is not None:
-            login(request, user)
-            return render(request,'apps/home.html')
-        else:
-            messages.error(request, 'Invalid Username and Password')
-            return render(request,'apps/signIn.html')
-
-    context={}
-    return render(request,'apps/signIn.html',context)
-
+#     context={}
+#     return render(request,'apps/signIn.html',context)
 
 class CategoryView(View):
     def get(self,request,val):
@@ -75,3 +74,21 @@ class productDetail(View):
         product = Product.objects.filter(id=pk).values()    #primaryKey==pk(parameter)
         return render(request,"apps/productDetail.html",locals())
 
+class CustomerRegistrationView(View):
+    def get(self,request):
+        form = CustomerResigtrationForm()
+        return render(request,'apps/customerRegistration.html',locals())
+    def post(self,request):
+        form = CustomerResigtrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"Congratulations! User Register Successfully")
+        else:
+            messages.warning(request,"Invalid Input Data")
+        return render(request,'apps/customerRegistration.html',locals())
+
+class ProfileView(View):
+    def get(self,request):
+        return render(request,'apps/profile.html',locals())
+    def post(self,request):
+        return render(request,'apps/profile.html',locals())

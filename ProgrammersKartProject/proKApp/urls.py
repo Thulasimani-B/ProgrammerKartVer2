@@ -19,15 +19,21 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+# authentication
+from django.contrib.auth import views as auth_view
+from . forms import LoginForm, MyPasswordResetForm
 
 urlpatterns = [
-    path('signIn/',views.signIn,name='signIn'),
-    path('signUp/',views.signUp,name='signUp'),
     path('about/',views.about,name='about'),
     path('contactUs',views.contactUs,name="contactUs"),
     path('',views.home,name='home'),
     path('category/<slug:val>',views.CategoryView.as_view(),name='category'),
-    path('productDetail/<int:pk>',views.productDetail.as_view(),name='productDetail')
+    path('productDetail/<int:pk>',views.productDetail.as_view(),name='productDetail'),
+    path('profile/',views.ProfileView.as_view(),name='profile'),
 
-    
+    # login authentication
+    path('registration/',views.CustomerRegistrationView.as_view(),name='customerRegistration'),
+    path('accounts/login/',auth_view.LoginView.as_view(template_name='apps/login.html',authentication_form=LoginForm),name='login'),
+    path('password-reset/',auth_view.PasswordResetView.as_view(template_name='apps/password_reset.html',form_class=MyPasswordResetForm), name='password_reset'),
+
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
