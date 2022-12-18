@@ -1,0 +1,57 @@
+/* container for form*/
+
+.signUp-container{
+    margin: 50px;
+}
+/*card*/
+.card-body{    
+    box-shadow: 8px 8px 50px #000;
+    
+}
+/* label inside in the form */
+label{
+    margin-bottom: 8px;
+}
+
+/* fields inside in the form */
+.signUp_fields{
+    display:flex;
+    justify-content: space-around;
+}
+
+/*submit button*/
+#submit{
+    border:none;
+    outline:none;
+    width:80%;
+    height:40px;
+    background-color: black;
+    color:white;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-left: 10%;
+    cursor:pointer;
+}
+
+/* signUp errors */
+
+#signUp-errors .errorlist{
+    color:rgb(245, 48, 13);
+    list-style: none;
+    font-size:12px;
+    text-transform: capitalize;
+    margin-left:2.5%;
+}
+
+/* signUp bottom content */
+.signUp-BottomContent 
+{
+    text-align: center;
+    padding:10px;
+}
+
+.signUp-BottomContent a{
+    color:rgb(77, 75, 76);
+    
+}

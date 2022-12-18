@@ -1,0 +1,127 @@
+body{
+    margin:0;
+    border:0;
+}
+
+/* Centering the whole sign up container */
+
+.signIn-container
+{
+    background:rgb(248, 248, 250);
+    width:100%;
+    height:80vh;
+    display:flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+/* aligning the signindiv contents */
+
+.signIn-container .signIndiv{
+    width:40%;
+    height:50vh;
+    padding:20px;
+    background:rgb(248, 248, 250);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 8px 8px 50px #000;
+}
+
+.signIn-container .signIndiv .signInForm input{
+    margin:5px;
+}
+
+
+.signInForm{
+    display:flex;
+    flex-direction: column;
+}
+
+.signInForm #pword,#uname
+{
+    /* display: none; */
+    border:none;
+    outline:none;
+    background:transparent;
+    border-bottom:3px outset black;
+    color:black;
+    height:30px;
+    font-size: 16px;
+    opacity:1;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.signInForm #submit{
+    border:none;
+    outline:none;
+    height:40px;
+    background-color: black;
+    color:white;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 25px;
+    cursor:pointer
+}
+
+/* bottom content */
+
+.signIn-bottomContent
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.signIn-bottomContent #messages
+{
+    text-align: center;
+    color: rgb(61, 60, 60);
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.signIn-bottomContent a{
+    text-decoration: none;
+    color:black;
+    font-size:16px;
+}
+
+
+/* aligning the social-links icons */
+
+/* .signIn-socialLinks{
+    margin-top: 1rem;
+    
+}
+
+.signIn-socialLinks a{
+    font-size:1rem;
+    color:rgb(20, 16, 16);
+    border-radius: 50%;
+    margin-left:20px;
+    padding:.5rem;
+    margin-top: 1rem;
+} */
+
+/* .signIn-socialLinks a:nth-child(1)
+{
+    background: #3b5998;
+}
+
+.signIn-socialLinks a:nth-child(2) {
+    background: #0077b5;
+}
+
+.signIn-socialLinks a:nth-child(3)
+{
+    background:black;
+}
+
+.signIn-socialLinks a:nth-child(4)
+{
+    background:#55acee;
+} */
+

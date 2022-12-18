@@ -1,0 +1,39 @@
+
+{%extends 'apps/base.html' %}
+
+
+{%block title%}
+SignIn
+{%endblock title%}
+
+
+{%block content%}
+<div class="signIn-container">
+    <div class="signIndiv">
+      <h1>Sign In</h1>
+      <form action="" method="POST" class="signInForm">
+        {% csrf_token %}
+        <input type="text" placeholder="Username" id="uname" name="uname" />
+        <input type="password" placeholder="Password" id="pword" name="pword"  />
+        <input type="submit" value="SIGN IN" id="submit" />
+      </form>
+
+      <div class="signIn-bottomContent">
+        {% for message in messages %} 
+        <p id="messages"> {{message}} </p>
+        {% endfor %}
+        <a href="">Forgot Password?</a>
+        <a href="{% url 'signUp' %}">Sign up</a>
+      </div>
+      <!-- <div class="signIn-socialLinks">
+        <a href=""><i class="fa fa-facebook"></i></a>
+        <a href=""><i class="fa fa-twitter"></i></a>
+        <a href=""><i class="fa fa-github"></i></a>
+        <a href=""><i class="fa fa-linkedin"></i></a>
+      </div> -->
+    </div>
+  </div>
+{%endblock content%}
+
+
+

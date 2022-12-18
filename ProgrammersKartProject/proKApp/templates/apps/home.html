@@ -1,0 +1,73 @@
+{% extends 'apps/base.html' %}
+{% load static %}
+
+{%block title%} Home {%endblock title%}
+
+    
+{% block banner %}
+<!-- <img src="../static/apps/images/bgimgfin.jpg" alt="" height="700px" width="100% "> -->
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" wrap="true"> 
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="1000">
+      <img src="{% static 'apps/images/cover2.jpg' %}" class="d-block w-100" alt="banImage1" height="400vh">
+    </div>
+    <div class="carousel-item" data-interval="1000">
+      <img src="{% static 'apps/images/cover4.jpg' %}" class="d-block w-100" alt="banImage2" height="400vh">
+    </div>
+    <!-- <div class="carousel-item" data-interval="1000">
+      <img src="{% static 'apps/images/bgimgfin.jpg' %}" class="d-block w-100" alt="banImage3" height="400vh">
+    </div> -->
+  </div>
+</div>
+{% endblock banner %}
+
+{% block product_description %} 
+<div class="container">
+<div class="row bg-info text-center p-5 text-white border-bottom shadow">
+  <h1>Products</h1>
+  <small class="fs-5">ProgrammersKart offers a wide range of products.</small>
+</div>
+</div>
+{% endblock product_description %}
+
+{%block content%}
+<div class="homeproducts row row-cols-1 row-cols-md-4 g-4">
+    <div class="col">
+      <div class="card">
+        <a href="{% url 'category' 'OR'%}"><img src="../static/apps/images/ornamental_cover.jpg" class="card-img-top" alt="..."></a>
+        <div class="card-body">
+          <h5 class="card-title">Ornamentals</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <a href="{% url 'category' 'FR'%}"><img src="../static/apps/images/furniture_cover.jpg" class="card-img-top" alt="..."></a>
+        <div class="card-body">
+          <h5 class="card-title">Furnitures</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <a href="{% url 'category' 'AR'%}"><img src="../static/apps/images/accessories_cover.jpg" class="card-img-top" alt="..."></a>
+        <div class="card-body">
+          <h5 class="card-title">Accessories</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col">
+      <div class="card">
+        <img src="../static/apps/images/bgimage.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Category 4</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+      </div>
+    </div> -->
+  </div>
+{% endblock content%}
