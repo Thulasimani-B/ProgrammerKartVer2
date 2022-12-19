@@ -16,7 +16,7 @@ from django.contrib.auth import authenticate, login, logout
 #importing view
 from django.views import View
 
-from . models import Product
+from . models import Product, Cart
 
 # registration
 from . forms import CustomerResigtrationForm, CustomerProfileForm
@@ -30,38 +30,6 @@ def about(request):
 
 def contactUs(request):
     return render(request,'apps/contactUs.html')
-
-# def signUp(request):
-#     form = CreateUserForm()
-
-#     if request.method=='POST':
-#         form = CreateUserForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             user=form.cleaned_data.get('username')
-#             messages.success(request, 'Account was created for ' + user)   
-#             return redirect('signIn')   
-
-#     context = {'form':form}
-#     return render(request,'apps/signUp.html',context)
-
-# def signIn(request):
-
-#     if request.method == 'POST':
-#         username=request.POST.get('uname')
-#         password=request.POST.get('pword')
-
-#         user=authenticate(request, username=username, password=password)
-
-#         if user is not None:
-#             login(request, user)
-#             return render(request,'apps/home.html')
-#         else:
-#             messages.error(request, 'Invalid Username and Password')
-#             return render(request,'apps/signIn.html')
-
-#     context={}
-#     return render(request,'apps/signIn.html',context)
 
 class CategoryView(View):
     def get(self,request,val):
@@ -134,3 +102,21 @@ class updateAddress(View):
         else:
             messages.warning(request,"Invalid Input Data")
         return redirect("address")                             #after updating redirect to the address page
+
+
+
+
+# Add to cart
+
+# def add_to_cart(request):
+#     user=request.user
+#     product_id=request.GET.get('prod_id')
+#     # product = Product.objects.get(id=product_id)
+#     product = Product.objects.filter(id=product_id).values()
+#     Cart(user=user,product=product).save()
+#     return redirect('/cart',locals())
+
+# def show_cart(request):
+#     user=request.user
+#     cart = Cart.objects.filter(user=user)
+#     return render(request,'app/addtocart.html',locals())

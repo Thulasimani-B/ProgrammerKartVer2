@@ -125,3 +125,4 @@ LOGIN_REDIRECT_URL = '/profile/'   # redirecting the user to their profile page
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'       #when resetting the password the email will come in the console 

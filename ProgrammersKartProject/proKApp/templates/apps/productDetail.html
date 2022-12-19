@@ -27,7 +27,10 @@
             <h5>{{detail.description}}</h5><br><br>
 
             <div class="buttons row flex" style="font-family: Rajdhani;">
-                <button type="submit" class="d-grid gap-2 btn1 btn btn-danger p-1 m-1 btn-lg text-decoration-none text-white">Add to Cart</button>
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" values="{{product.id}}"/>
+                    <button type="submit" class="d-grid gap-2 btn1 btn btn-danger p-1 m-1 btn-lg text-decoration-none text-white">Add to Cart</button>
+                </form>
                 <div class="btn btn-dark p-1 m-1 btn-lg"><a href="#" class="text-decoration-none text-white">Buy Now</a></div>
             </div>
             </div>
@@ -35,5 +38,4 @@
         {%endfor%}
     </div>
 </div>
-
 {% endblock content%}

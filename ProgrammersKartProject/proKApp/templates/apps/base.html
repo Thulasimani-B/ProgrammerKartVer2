@@ -27,14 +27,17 @@
     </title>
 </head>
 <body>   
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div class="container-fluid">
           <a class="navbar-brand" href="{% url 'home' %}" style="color: rgb(31, 231, 231);">PROGRAMMERS KART</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll nav-fill w-100" style="--bs-scroll-height: 100px;">
+
+              {% if request.user.is_authenticated %}
+              
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
               </li>
@@ -45,12 +48,15 @@
                 <a class="nav-link active" href="{% url 'contactUs' %}">ContactUs</a>
               </li>
               
-              <li class="nav-item">
-                <a class="nav-link active" href="{% url 'login' %}">LogIn</a>
-              </li>
-              <li class="nav-item">
+              
+              
+              <!-- <li class="nav-item">
                 <a class="nav-link active" href="{% url 'customerRegistration' %}">Register</a>
-              </li>
+              </li> -->
+              <!-- <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
 
               <li class="nav-item dropdown mx-2">
                 <a href="#" class="nav-link dropdown-toggle text-white" id="profileDropdown" role="button" data-bs-toggle="dropdown"></a>
@@ -61,11 +67,30 @@
                   <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                 </ul>
               </li>
-            </ul>
-            <!-- <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form> -->
+                  <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'profile' %}">Welcome {{request.user}}</a>
+                  </li>
+            
+            
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'about' %}">AboutUs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'contactUs' %}">ContactUs</a>
+              </li>
+              
+              <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'login' %}">LogIn</a>
+              </li>
+              
+            {% endif %}
+          </ul>
+
+          
           </div>
         </div>
       </nav>
