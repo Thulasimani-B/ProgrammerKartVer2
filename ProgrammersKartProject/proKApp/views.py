@@ -4,6 +4,7 @@ from django.forms import inlineformset_factory
 
 # Create your views here.
 from . models import *
+from .models import Cart
 
 #importing count
 from django.db.models import Count
@@ -102,9 +103,6 @@ class updateAddress(View):
             messages.warning(request,"Invalid Input Data")
         return redirect("address")                             #after updating redirect to the address page
 
-
-
-
 # Add to cart
 
 def add_to_cart(request):
@@ -115,6 +113,11 @@ def add_to_cart(request):
     return redirect("/cart")
 
 def show_cart(request):
-    user=request.user
+    user = request.user
     cart = Cart.objects.filter(user=user)
-    return render(request,'app/addtocart.html',locals())
+    amount=0
+    for p in cart:
+        value = p.quantity * p.product.selling_price
+        amount = amount + value
+    totalamount = amount + 40
+    return render(request,'apps/addtocart.html',locals())
