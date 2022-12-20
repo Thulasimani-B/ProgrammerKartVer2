@@ -24,7 +24,7 @@ class Product(models.Model):
     title = models.CharField(max_length=100)
     selling_price = models.FloatField()
     description = models.TextField()
-    prodapp = models.TextField(default='')
+    # prodapp = models.TextField(default='')
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
     product_image = models.ImageField(upload_to='product')
     def __str__(self):
@@ -42,7 +42,7 @@ class Customer(models.Model):
         return self.name
 
 
-# Add to cart (cart model)
+# # Add to cart (cart model)
 
 class Cart(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)

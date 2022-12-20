@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect 
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
+
 # Create your views here.
 from . models import *
 
@@ -15,8 +16,6 @@ from django.contrib.auth import authenticate, login, logout
 
 #importing view
 from django.views import View
-
-from . models import Product, Cart
 
 # registration
 from . forms import CustomerResigtrationForm, CustomerProfileForm
@@ -39,7 +38,7 @@ class CategoryView(View):
 
 class productDetail(View):
     def get(self,request,pk):
-        product = Product.objects.filter(id=pk).values()    #primaryKey==pk(parameter)
+        product = Product.objects.get(pk=pk)    #primaryKey==pk(parameter)
         return render(request,"apps/productDetail.html",locals())
 
 class CustomerRegistrationView(View):
@@ -108,15 +107,14 @@ class updateAddress(View):
 
 # Add to cart
 
-# def add_to_cart(request):
-#     user=request.user
-#     product_id=request.GET.get('prod_id')
-#     # product = Product.objects.get(id=product_id)
-#     product = Product.objects.filter(id=product_id).values()
-#     Cart(user=user,product=product).save()
-#     return redirect('/cart',locals())
+def add_to_cart(request):
+    user=request.user
+    product_id=request.GET.get('prod_id')
+    product = Product.objects.get(id=product_id)
+    Cart(user=user,product=product).save()
+    return redirect("/cart")
 
-# def show_cart(request):
-#     user=request.user
-#     cart = Cart.objects.filter(user=user)
-#     return render(request,'app/addtocart.html',locals())
+def show_cart(request):
+    user=request.user
+    cart = Cart.objects.filter(user=user)
+    return render(request,'app/addtocart.html',locals())
