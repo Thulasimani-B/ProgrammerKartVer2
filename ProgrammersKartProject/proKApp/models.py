@@ -72,6 +72,8 @@ STATUS_CHOICES = {
     ('Pending','Pending'),
 }
 
+
+
 class OrderPlaced(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     Customer= models.ForeignKey(Customer,on_delete=models.CASCADE)
