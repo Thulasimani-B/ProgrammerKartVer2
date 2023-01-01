@@ -113,10 +113,14 @@ class updateAddress(View):
 
 def add_to_cart(request):
     user=request.user
-    product_id=request.GET.get('prod_id')
-    product = Product.objects.get(id=product_id)
-    Cart(user=user,product=product).save()
-    return redirect("/cart")
+
+    if request.user.is_authenticated:
+        product_id=request.GET.get('prod_id')
+        product = Product.objects.get(id=product_id)
+        Cart(user=user,product=product).save()
+        return redirect("/cart")
+    else:
+        return redirect("/accounts/login")
 
 def show_cart(request):
     user = request.user
