@@ -11,3 +11,27 @@
 #product_display {
     margin: 100px;
 }
+
+.paymentBox{
+    margin-top: 6%;
+    margin-bottom: 6%;
+    margin-left: 30%;
+    width: 40%;
+} 
+
+.text-only a{
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    padding: 10px 50px;
+    
+    
+}
+
+.totalAmountBlock input{
+    margin-bottom: 50px;
+}
+
+.footerBlock{
+    margin-top: 50px;
+} 
